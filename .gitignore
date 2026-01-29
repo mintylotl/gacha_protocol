@@ -1,1 +1,148 @@
+
+~/Proj/projects/life_gacha master*
+❯ cargo run -- add 5
+   Compiling life_gacha v0.1.0 (/home/jwm/Proj/projects/life_gacha)
+warning: unused imports: `Read` and `Write`
+ --> src/main.rs:5:21
+  |
+5 |     io::{BufWriter, Read, Write},
+  |                     ^^^^  ^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused variable: `val`
+  --> src/main.rs:61:17
+   |
+61 |             let val = save_user(&player);
+   |                 ^^^ help: if this is intentional, prefix it with an underscore: `_val`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: variable does not need to be mutable
+  --> src/main.rs:36:9
+   |
+36 |     let mut data = fs::read_to_string("./user_data.json");
+   |         ----^^^^
+   |         |
+   |         help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` on by default
+
+warning: struct `JsonMembers` is never constructed
+  --> src/main.rs:23:8
+   |
+23 | struct JsonMembers {
+   |        ^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `life_gacha` (bin "life_gacha") generated 4 warnings (run `cargo fix --bin "life_gacha"` to apply 2 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.46s
+     Running `target/debug/life_gacha add 5`
+Success!
+Adding 5
+
+~/Proj/projects/life_gacha master*
+❯ cargo run -- add 5
+   Compiling life_gacha v0.1.0 (/home/jwm/Proj/projects/life_gacha)
+warning: struct `JsonMembers` is never constructed
+  --> src/main.rs:23:8
+   |
+23 | struct JsonMembers {
+   |        ^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `life_gacha` (bin "life_gacha") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.50s
+     Running `target/debug/life_gacha add 5`
+Success!
+Adding 5
+2
+
+~/Proj/projects/life_gacha master*
+❯ cargo run -- add 5
+warning: struct `JsonMembers` is never constructed
+  --> src/main.rs:23:8
+   |
+23 | struct JsonMembers {
+   |        ^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `life_gacha` (bin "life_gacha") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `target/debug/life_gacha add 5`
+Success!
+Adding 5
+2
+
+~/Proj/projects/life_gacha master*
+❯ cargo run -- add 5
+warning: struct `JsonMembers` is never constructed
+  --> src/main.rs:23:8
+   |
+23 | struct JsonMembers {
+   |        ^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `life_gacha` (bin "life_gacha") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `target/debug/life_gacha add 5`
+Success!
+Adding 5
+2
+
+~/Proj/projects/life_gacha master*
+❯ cargo run -- add 5
+warning: struct `JsonMembers` is never constructed
+  --> src/main.rs:23:8
+   |
+23 | struct JsonMembers {
+   |        ^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `life_gacha` (bin "life_gacha") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `target/debug/life_gacha add 5`
+Success!
+Adding 5
+2
+
+~/Proj/projects/life_gacha master*
+❯ cargo run -- add 5
+warning: struct `JsonMembers` is never constructed
+  --> src/main.rs:23:8
+   |
+23 | struct JsonMembers {
+   |        ^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `life_gacha` (bin "life_gacha") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `target/debug/life_gacha add 5`
+Success!
+Adding 5
+1
+
+~/Proj/projects/life_gacha master*
+❯ git commit -a -m "added \{add\} logic"
 /target
+user_data.json
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+.gitignore [+]                                                                                                                                            2,15           All
+-- INSERT --
