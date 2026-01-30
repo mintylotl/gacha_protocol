@@ -18,9 +18,13 @@ struct Args {
 #[derive(Serialize, Deserialize, Debug)]
 struct Player {
     name: String,
-    tickets: u32,
-    a_pity: u8,
-    b_pity: u8,
+    tickets: u64,
+    sss_pity: i16,
+    ss_pity: i16,
+    s_pity: i16,
+    inc_sss: f64,
+    inc_ss: f64,
+    inc_s: f64,
     has_slip: bool,
     accumulated_increase: f64,
 
@@ -34,8 +38,12 @@ impl Player {
         Self {
             name,
             tickets: 0,
-            a_pity: 0,
-            b_pity: 0,
+            sss_pity: 0,
+            ss_pity: 0,
+            s_pity: 0,
+            inc_sss: 0.0,
+            inc_ss: 0.0,
+            inc_s: 0.0,
             has_slip: false,
             accumulated_increase: 0.0,
             total_pulls: 0,
@@ -57,7 +65,7 @@ fn save_user(player: &Player) -> std::io::Result<()> {
 fn main() {
     let data = fs::read_to_string("./user_data.json");
     let mut player = Player::new("axol".to_string());
-    let mut wish = Vec::new();
+    let mut wishes: Option<Vec<Rarities>> = None;
 
     match data {
         Ok(data) => {
@@ -73,16 +81,19 @@ fn main() {
     let args = Args::parse();
     match args.action.as_str() {
         "add" => {
-            player.tickets = player.tickets + args.amount as u32;
+            player.tickets = player.tickets + args.amount as u64;
             println!("Added {} tickets to {}'s wallet!", args.amount, player.name);
+            let _ = save_user(&player);
+            return;
         }
         "pull" => {
-            wish = match args.amount {
+            wishes = match args.amount {
                 1 => Some(machine::handle_pull(&mut player)),
                 10 => Some(machine::handle_pull_ten(&mut player)),
+                10000 => Some(machine::handle_pull_h(&mut player)),
                 _ => {
                     println!("Invalid pull count");
-                    None
+                    panic!();
                 }
             }
         }
@@ -92,4 +103,47 @@ fn main() {
         }
     }
     let _ = save_user(&player);
+
+    match wishes {
+        None => {
+            println!("Internal Err, no wishes made.");
+            panic!();
+        }
+        _ => {
+            println!("Successfully Performed Pulls");
+        }
+    }
+    let wishes = wishes.unwrap();
+    match wishes[0] {
+        Rarities::NoTickets => {
+            println!("Not Enough Tickets Available!");
+            panic!();
+        }
+        _ => print!(""),
+    }
+    let mut wishes = wishes.into_iter();
+
+    let mut mythic = 0;
+    let mut ss = 0;
+    let mut s = 0;
+    let mut a = 0;
+    let mut b = 0;
+    let mut c = 0;
+
+    for x in wishes {
+        match machine::get_string(x) {
+            "Mythic" => mythic += 1,
+            "SS" => ss += 1,
+            "S" => s += 1,
+            "A" => a += 1,
+            "B" => b += 1,
+            _ => c += 1,
+        }
+    }
+    println!("Mythics: {}", mythic);
+    println!("SS: {}", ss);
+    println!("S: {}", s);
+    println!("A: {}", a);
+    println!("B: {}", b);
+    println!("C: {}", c);
 }
