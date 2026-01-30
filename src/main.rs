@@ -1,7 +1,7 @@
 mod machine;
 
 use clap::Parser;
-use machine::Rarities;
+use machine::{get_string, Rarities};
 use serde::{Deserialize, Serialize};
 use std::{
     fs::{self, File},
@@ -26,7 +26,6 @@ struct Player {
     inc_ss: f64,
     inc_s: f64,
     has_slip: bool,
-    accumulated_increase: f64,
 
     total_pulls: u128,
 }
@@ -45,7 +44,6 @@ impl Player {
             inc_ss: 0.0,
             inc_s: 0.0,
             has_slip: false,
-            accumulated_increase: 0.0,
             total_pulls: 0,
         }
     }
@@ -90,7 +88,7 @@ fn main() {
             wishes = match args.amount {
                 1 => Some(machine::handle_pull(&mut player)),
                 10 => Some(machine::handle_pull_ten(&mut player)),
-                10000 => Some(machine::handle_pull_h(&mut player)),
+                //10000 => Some(machine::handle_pull_h(&mut player)),
                 _ => {
                     println!("Invalid pull count");
                     panic!();
@@ -122,7 +120,17 @@ fn main() {
         _ => print!(""),
     }
     let mut wishes = wishes.into_iter();
+    for x in wishes {
+        let won = get_string(&x);
+        match won {
+            "A" => println!("You pulled an {}", won),
+            "SS" => println!("You pulled a {}, Wow!", won),
+            "Mythic" => println!("You pulled a {}, Unreal!", won),
+            _ => println!("You pulled a {}", won),
+        }
+    }
 
+    /*
     let mut mythic = 0;
     let mut ss = 0;
     let mut s = 0;
@@ -146,4 +154,5 @@ fn main() {
     println!("A: {}", a);
     println!("B: {}", b);
     println!("C: {}", c);
+    */
 }

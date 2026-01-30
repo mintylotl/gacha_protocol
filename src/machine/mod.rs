@@ -20,7 +20,7 @@ pub fn handle_pull_ten(player: &mut Player) -> Vec<Rarities> {
 pub fn handle_pull_h(player: &mut Player) -> Vec<Rarities> {
     let mut wishes = Vec::new();
 
-    for _ in 0..10000 {
+    for _ in 0..1000 {
         wishes.push(Rarities::pull(player));
     }
     wishes
