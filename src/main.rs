@@ -53,7 +53,7 @@ struct JsonMembers {
     members: Vec<Player>,
 }
 fn save_user(player: &Player) -> std::io::Result<()> {
-    let file = File::create("./user_data.json").unwrap();
+    let file = File::create("/home/jwm/.programs/gacha/user_data.json").unwrap();
     let mut writer = BufWriter::new(file);
 
     serde_json::to_writer_pretty(&mut writer, player)?;
@@ -61,7 +61,7 @@ fn save_user(player: &Player) -> std::io::Result<()> {
 }
 
 fn main() {
-    let data = fs::read_to_string("./user_data.json");
+    let data = fs::read_to_string("/home/jwm/.programs/gacha/user_data.json");
     let mut player = Player::new("axol".to_string());
     let mut wishes: Option<Vec<Rarities>> = None;
 
