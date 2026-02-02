@@ -1,27 +1,15 @@
-mod table;
+mod lever;
 
-use crate::Player;
-pub use table::get_string;
-pub use table::Rarities;
-
-pub fn handle_pull(player: &mut Player) -> Vec<Rarities> {
-    let mut vec = Vec::new();
-    vec.push(Rarities::pull(player));
-    vec
+pub use lever::{pull, Rarities};
+pub struct PityCtx {
+    a_pity: u16,
+    s_pity: u16,
+    sss_pity: u16,
+    inc_a: f64,
+    inc_s: f64,
+    inc_sss: f64,
 }
-pub fn handle_pull_ten(player: &mut Player) -> Vec<Rarities> {
-    let mut wishes = Vec::new();
 
-    for _ in 0..10 {
-        wishes.push(Rarities::pull(player));
-    }
-    wishes
-}
-pub fn handle_pull_h(player: &mut Player) -> Vec<Rarities> {
-    let mut wishes = Vec::new();
-
-    for _ in 0..1000 {
-        wishes.push(Rarities::pull(player));
-    }
-    wishes
+pub fn handle_pull(pity_ctx: &PityCtx) -> Rarities {
+    lever::pull(pity_ctx)
 }
