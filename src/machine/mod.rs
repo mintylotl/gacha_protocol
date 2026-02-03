@@ -2,14 +2,15 @@ mod lever;
 
 pub use lever::{pull, Rarities};
 pub struct PityCtx {
-    a_pity: u16,
-    s_pity: u16,
-    sss_pity: u16,
-    inc_a: f64,
-    inc_s: f64,
-    inc_sss: f64,
+    pub a_pity: u16,
+    pub s_pity: u16,
+    pub sss_pity: u16,
 }
 
 pub fn handle_pull(pity_ctx: &PityCtx) -> Rarities {
-    lever::pull(pity_ctx)
+    pull(pity_ctx)
+}
+
+pub fn get_string(item: &Rarities) -> &'static str {
+    lever::get_string(item)
 }
