@@ -1,5 +1,5 @@
 mod machine;
-use machine::{get_string, handle_pull};
+use machine::handle_pull;
 pub use machine::{PityCtx, Rarities};
 
 pub fn roll(ctx: &PityCtx) -> Rarities {

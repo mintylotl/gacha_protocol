@@ -43,7 +43,7 @@ pub fn pull(pity_stats: &PityCtx) -> Rarities {
     Rarities::B
 }
 
-pub fn get_string(item: &Rarities) -> &'static str {
+pub fn _get_string(item: &Rarities) -> &'static str {
     match item {
         Rarities::MythicSSS => "Mythic",
         Rarities::S => "S",
