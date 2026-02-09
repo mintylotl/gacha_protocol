@@ -12,17 +12,17 @@ pub fn pull(pity_stats: &PityCtx) -> Rarities {
     let mut roll: f64 = rng.random();
 
     let mut mythic = 0.00072;
-    let mut s = 0.072;
-    let mut a = 0.24;
+    let mut s = 0.048;
+    let mut a = 0.072;
 
     if pity_stats.sss_pity > 1104 {
-        mythic += ((pity_stats.sss_pity - 1104) as f64 * 0.000099).min(0.04);
+        mythic += ((pity_stats.sss_pity - 1104) as f64 * 0.000024).min(0.01);
     }
     if pity_stats.s_pity > 24 {
-        s += ((pity_stats.s_pity - 24) as f64 * 0.005).min(0.08);
+        s += ((pity_stats.s_pity - 16) as f64 * 0.024).min(0.072);
     }
-    if pity_stats.a_pity > 5 {
-        a += ((pity_stats.a_pity - 5) as f64 * 0.1).min(0.5);
+    if pity_stats.a_pity > 12 {
+        a += ((pity_stats.a_pity - 12) as f64 * 0.048).min(0.24);
     }
 
     // 0.072% of hitting Mythic
